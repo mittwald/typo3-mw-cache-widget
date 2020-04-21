@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Widget/Widget" />
+<f:section name="main">
+
+    <div class="widget-table-wrapper">
+        <f:if condition="{widgetEnabled}">
+            <f:then>
+                <div class="widget-chart" style="height: 260px">
+                    <canvas></canvas>
+                </div>
+            </f:then>
+            <f:else>
+                <div style="text-align: center; margin: 0px 10px 0px 10px">
+                    <h2><f:translate key="{notActive}"/></h2>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+
+</f:section>
+<f:section name="footer">
+    <f:if condition="{widgetEnabled}">
+        <f:then>
+            <div style="text-align: center">
+                <p>{usedMemory} MB von {sumMemory} MB belegt</p>
+            </div>
+        </f:then>
+    </f:if>
+</f:section>
+</html>

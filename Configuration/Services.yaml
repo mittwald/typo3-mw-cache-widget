@@ -1,0 +1,18 @@
+services:
+
+  Mittwald\CacheStatsWidget\:
+    resource: '../Classes/*'
+
+  opCache:
+    class: Mittwald\CacheStatsWidget\Widgets\OpCacheWidget
+    arguments: ['opCache']
+    tags:
+      - name: dashboard.widget
+        widgetGroups: 'typo3'
+
+  apcuCache:
+    class: Mittwald\CacheStatsWidget\Widgets\ApcuCacheWidget
+    arguments: ['apcuCache']
+    tags:
+      - name: dashboard.widget
+        widgetGroups: 'typo3'

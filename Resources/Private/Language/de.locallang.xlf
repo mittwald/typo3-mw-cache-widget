@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0" xmlns:mw="http://typo3.org/schemas/xliff">>
+	<file source-language="en" datatype="plaintext" original="messages" date="2020-04-15T00:00:00Z" product-name="mw_cache_widget">
+		<header/>
+		<body>
+			<trans-unit id="opCacheWidget.title" xml:space="preserve">
+				<source>OpCodeCache Auslastung (MB)</source>
+				<target>OpCodeCache Auslastung (MB)</target>
+			</trans-unit>
+			<trans-unit id="opCacheWidget.description" xml:space="preserve">
+				<source>Zeigt den aktuellen Speicherbedarf von OpCodeCache an.</source>
+				<target>Zeigt den aktuellen Speicherbedarf von OpCodeCache an.</target>
+			</trans-unit>
+			<trans-unit id="opCacheWidget.notactive" xml:space="preserve">
+				<source>OpCodeCache ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</source>
+				<target>OpCodeCache ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</target>
+			</trans-unit>
+
+			<trans-unit id="apcuCacheWidget.title" xml:space="preserve">
+				<source>APCu Auslastung (MB)</source>
+				<target>APCu Auslastung (MB)</target>
+			</trans-unit>
+			<trans-unit id="apcuCacheWidget.description" xml:space="preserve">
+				<source>Zeigt den aktuellen Speicherbedarf von APCu an.</source>
+				<target>Zeigt den aktuellen Speicherbedarf von APCu an.</target>
+			</trans-unit>
+			<trans-unit id="apcuCacheWidget.notactive" xml:space="preserve">
+				<source>APCu ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</source>
+				<target>APCu ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

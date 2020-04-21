@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0" xmlns:mw="http://typo3.org/schemas/xliff">>
+	<file source-language="en" datatype="plaintext" original="messages" date="2020-04-15T00:00:00Z" product-name="mw_cache_widget">
+		<header/>
+		<body>
+			<trans-unit id="opCacheWidget.title" xml:space="preserve">
+				<source>OpCodeCache Memory Usage (MB)</source>
+			</trans-unit>
+			<trans-unit id="opCacheWidget.description" xml:space="preserve">
+				<source>Shows the current memory usage of OpCodeCache.</source>
+			</trans-unit>
+			<trans-unit id="opCacheWidget.notactive" xml:space="preserve">
+				<source>OpCodeCache seems to be inactive. Please check your webserver configuration.</source>
+			</trans-unit>
+
+			<trans-unit id="apcuCacheWidget.title" xml:space="preserve">
+				<source>APCu Memory Usage (MB)</source>
+			</trans-unit>
+			<trans-unit id="apcuCacheWidget.description" xml:space="preserve">
+				<source>Shows the current memory usage of APCu.</source>
+			</trans-unit>
+			<trans-unit id="apcuCacheWidget.notactive" xml:space="preserve">
+				<source>APCu seems to be inactive. Please check your webserver configuration.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
