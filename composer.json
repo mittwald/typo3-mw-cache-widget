@@ -1,6 +1,6 @@
 {
-	"name": "mittwald/mw_matomo_widget",
-	"description": "Dashboard widget that displays visitor data of your Matomo instance",
+	"name": "mw/cache-widget",
+	"description": "Dashboard widget that displays the current memory usage of OpCodeCache or APCu",
 	"require": {
 		"php": ">=7.2.0",
 		"typo3/cms-core": "^10.4",
@@ -9,7 +9,7 @@
 	"type": "typo3-cms-extension",
 	"autoload": {
 		"psr-4": {
-			"Mittwald\\MatomoWidget\\": "Classes"
+			"Mittwald\\CacheStatsWidget\\": "Classes"
 		}
 	}
 }

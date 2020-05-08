@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+namespace Mittwald\CacheStatsWidget\Widgets;
+use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 
 /* * *************************************************************
  *  Copyright notice
@@ -24,21 +27,7 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
+interface CacheChartInterface extends ChartDataProviderInterface{
+    public function getFreeMemory(): float;
+    public function getSumMemory(): float;
 }
-
-call_user_func(static function() {
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-    $iconRegistry->registerIcon(
-        'tx-mw_cache_widget-widget-icon',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:mw_cache_widget/Resources/Public/Icons/Widget.svg']
-    );
-    $iconRegistry->registerIcon(
-        'tx-mw_cache_widget-dashboard-icon',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:mw_cache_widget/Resources/Public/Icons/Dashboard.svg']
-    );
-});

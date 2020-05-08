@@ -3,30 +3,27 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2020-04-15T00:00:00Z" product-name="mw_cache_widget">
 		<header/>
 		<body>
+			<trans-unit id="notactive" xml:space="preserve">
+				<source>The cache seems to be inactive. Please check your webserver configuration.</source>
+				<target>Der Cache ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</target>
+			</trans-unit>
+
 			<trans-unit id="opCacheWidget.title" xml:space="preserve">
-				<source>OpCodeCache Auslastung (MB)</source>
+				<source>OpCodeCache Memory Usage (MB</source>
 				<target>OpCodeCache Auslastung (MB)</target>
 			</trans-unit>
 			<trans-unit id="opCacheWidget.description" xml:space="preserve">
-				<source>Zeigt den aktuellen Speicherbedarf von OpCodeCache an.</source>
+				<source>Shows the current memory usage of OpCodeCache.</source>
 				<target>Zeigt den aktuellen Speicherbedarf von OpCodeCache an.</target>
-			</trans-unit>
-			<trans-unit id="opCacheWidget.notactive" xml:space="preserve">
-				<source>OpCodeCache ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</source>
-				<target>OpCodeCache ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</target>
 			</trans-unit>
 
 			<trans-unit id="apcuCacheWidget.title" xml:space="preserve">
-				<source>APCu Auslastung (MB)</source>
+				<source>APCu Memory Usage (MB)</source>
 				<target>APCu Auslastung (MB)</target>
 			</trans-unit>
 			<trans-unit id="apcuCacheWidget.description" xml:space="preserve">
-				<source>Zeigt den aktuellen Speicherbedarf von APCu an.</source>
+				<source>Shows the current memory usage of APCu.</source>
 				<target>Zeigt den aktuellen Speicherbedarf von APCu an.</target>
-			</trans-unit>
-			<trans-unit id="apcuCacheWidget.notactive" xml:space="preserve">
-				<source>APCu ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</source>
-				<target>APCu ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -1,60 +1,32 @@
 services:
 
-  Mittwald\MatomoWidget\:
+  Mittwald\CacheStatsWidget\:
     resource: '../Classes/*'
 
-  dashboard.widget.pageView:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+  dashboard.widget.opCache:
+    class: 'Mittwald\CacheStatsWidget\Widgets\AbstractDoughnutChartWidget'
     arguments:
-      $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewWidget'
+      $dataProvider: '@Mittwald\CacheStatsWidget\Widgets\OpCacheWidget'
       $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
-        identifier: 'pageView'
-        groupNames: 'general'
-        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.title.relative'
-        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.description'
-        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
+        identifier: 'opCache'
+        groupNames: 'systemInfo'
+        title: 'LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:opCacheWidget.title'
+        description: 'LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:opCacheWidget.description'
+        iconIdentifier: 'tx-mw_cache_widget-widget-icon'
         height: 'medium'
 
-  dashboard.widget.pageViewAbsolute:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+  dashboard.widget.apcuCache:
+    class: 'Mittwald\CacheStatsWidget\Widgets\AbstractDoughnutChartWidget'
     arguments:
-      $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewAbsoluteWidget'
+      $dataProvider: '@Mittwald\CacheStatsWidget\Widgets\ApcuCacheWidget'
       $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
-        identifier: 'pageViewAbsolute'
-        groupNames: 'general'
-        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.title'
-        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.description'
-        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
-        height: 'medium'
-
-  dashboard.widget.visitorCount:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
-    arguments:
-      $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountWidget'
-      $view: '@dashboard.views.widget'
-    tags:
-      - name: dashboard.widget
-        identifier: 'visitorCount'
-        groupNames: 'general'
-        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.title.relative'
-        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.description'
-        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
-        height: 'medium'
-
-  dashboard.widget.visitorCountAbsolute:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
-    arguments:
-      $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountAbsoluteWidget'
-      $view: '@dashboard.views.widget'
-    tags:
-      - name: dashboard.widget
-        identifier: 'visitorCountAbsolute'
-        groupNames: 'general'
-        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.title'
-        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.description'
-        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
+        identifier: 'apcuCache'
+        groupNames: 'systemInfo'
+        title: 'LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:apcuCacheWidget.title'
+        description: 'LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:apcuCacheWidget.description'
+        iconIdentifier: 'tx-mw_cache_widget-widget-icon'
         height: 'medium'

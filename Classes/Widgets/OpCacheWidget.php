@@ -26,24 +26,19 @@ namespace Mittwald\CacheStatsWidget\Widgets;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Mittwald\CacheStatsWidget\Widgets\AbstractExtensionsWidget;
-
 /**
  * The OpCacheWidget reads and displays the storage usage
  * of PHP OpCache module
  */
-class OpCacheWidget extends AbstractExtensionsWidget
+class OpCacheWidget implements CacheChartInterface
 {
-    protected $title = AbstractExtensionsWidget::LANG_FILE . ':opCacheWidget.title';
-    protected $description = AbstractExtensionsWidget::LANG_FILE . ':opCacheWidget.description';
-    protected $notActiveText = AbstractExtensionsWidget::LANG_FILE . ':opCacheWidget.notactive';
     private const decimals = 2;
 
-    protected function prepareChartData(): void
+
+    public function getChartData(): array
     {
         $this->loadData();
-        $this->chartData = [
+        return [
             'labels' => [
                 "Belegter Speicher",
                 "Freier Speicher"
@@ -57,6 +52,18 @@ class OpCacheWidget extends AbstractExtensionsWidget
         ];
     }
 
+    public function getFreeMemory(): float
+    {
+        $this->loadData();
+        return $this->freeMemory;
+    }
+
+    public function getSumMemory(): float
+    {
+        $this->loadData();
+        return $this->sumMemory;
+    }
+
     /**
      * Load data from opcache module
      */
@@ -66,19 +73,9 @@ class OpCacheWidget extends AbstractExtensionsWidget
         {
             $opcacheData = opcache_get_status()["memory_usage"];
             $this->widgetEnabled = True;
-            $this->usedMemory = number_format($opcacheData["used_memory"]/1024/1024,self::decimals);
-            $this->freeMemory = number_format($opcacheData["free_memory"]/1024/1024,self::decimals);
-            $this->sumMemory = number_format(($opcacheData["used_memory"]+$opcacheData["free_memory"])/1024/1024,self::decimals);
+            $this->usedMemory = floatval(number_format($opcacheData["used_memory"]/1024/1024,self::decimals));
+            $this->freeMemory = floatval(number_format($opcacheData["free_memory"]/1024/1024,self::decimals));
+            $this->sumMemory = floatval(number_format(($opcacheData["used_memory"]+$opcacheData["free_memory"])/1024/1024,self::decimals));
         }
-    }
-
-    /**
-     * Renders the widget content
-     * @return string
-     */
-    public function renderWidgetContent(): string
-    {
-        $this->loadData();
-        return AbstractExtensionsWidget::renderWidgetContent();
     }
 }

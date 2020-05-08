@@ -26,18 +26,15 @@ namespace Mittwald\CacheStatsWidget\Widgets;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Mittwald\CacheStatsWidget\Widgets\AbstractExtensionsWidget;
-
 /**
  * The ApcuCacheWidget reads and displays the storage usage
  * of PHP APCu module
  */
-class ApcuCacheWidget extends AbstractExtensionsWidget
+class ApcuCacheWidget implements CacheChartInterface
 {
-    protected $title = AbstractExtensionsWidget::LANG_FILE . ':apcuCacheWidget.title';
-    protected $description = AbstractExtensionsWidget::LANG_FILE . ':apcuCacheWidget.description';
     private const decimals = 2; // decimals of graph values
+
+
     /**
      * Load data from apcu extension
      */
@@ -47,19 +44,42 @@ class ApcuCacheWidget extends AbstractExtensionsWidget
         {
             $apcuData = apcu_sma_info();
             $this->widgetEnabled = True;
-            $this->usedMemory = number_format(($apcuData["seg_size"] - $apcuData["avail_mem"])/1024/1024, self::decimals);
-            $this->freeMemory = number_format($apcuData["avail_mem"]/1024/1024, self::decimals);
-            $this->sumMemory = number_format($apcuData["seg_size"]/1024/1024, self::decimals);
+            $this->usedMemory = floatval(number_format(($apcuData["seg_size"] - $apcuData["avail_mem"])/1024/1024, self::decimals));
+            $this->freeMemory = floatval(number_format($apcuData["avail_mem"]/1024/1024, self::decimals));
+            $this->sumMemory = floatval(number_format($apcuData["seg_size"]/1024/1024, self::decimals));
         }
     }
 
-    /**
-     * Renders the widget content
-     * @return string
-     */
-    public function renderWidgetContent(): string
+    public function getFreeMemory(): float
     {
         $this->loadData();
-        return AbstractExtensionsWidget::renderWidgetContent();
+        return $this->freeMemory;
     }
+
+    public function getSumMemory(): float
+    {
+        $this->loadData();
+        return $this->sumMemory;
+    }
+
+    /*
+    * returns the chart data
+    */
+    public function getChartData(): array
+    {
+        $this->loadData();
+        return [
+            'labels' => [
+                "Belegter Speicher",
+                "Freier Speicher"
+            ],
+            'datasets' => [
+                [
+                    'backgroundColor' => ["#1A568F", "#93C481"],
+                    'data' => [$this->usedMemory, $this->freeMemory]
+                ]
+            ],
+        ];
+    }
+
 }
