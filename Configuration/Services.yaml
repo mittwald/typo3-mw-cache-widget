@@ -1,18 +1,60 @@
 services:
 
-  Mittwald\CacheStatsWidget\:
+  Mittwald\MatomoWidget\:
     resource: '../Classes/*'
 
-  opCache:
-    class: Mittwald\CacheStatsWidget\Widgets\OpCacheWidget
-    arguments: ['opCache']
+  dashboard.widget.pageView:
+    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    arguments:
+      $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewWidget'
+      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
-        widgetGroups: 'typo3'
+        identifier: 'pageView'
+        groupNames: 'general'
+        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.title.relative'
+        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.description'
+        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
+        height: 'medium'
 
-  apcuCache:
-    class: Mittwald\CacheStatsWidget\Widgets\ApcuCacheWidget
-    arguments: ['apcuCache']
+  dashboard.widget.pageViewAbsolute:
+    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    arguments:
+      $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewAbsoluteWidget'
+      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
-        widgetGroups: 'typo3'
+        identifier: 'pageViewAbsolute'
+        groupNames: 'general'
+        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.title'
+        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:pageViewCountWidget.description'
+        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
+        height: 'medium'
+
+  dashboard.widget.visitorCount:
+    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    arguments:
+      $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountWidget'
+      $view: '@dashboard.views.widget'
+    tags:
+      - name: dashboard.widget
+        identifier: 'visitorCount'
+        groupNames: 'general'
+        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.title.relative'
+        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.description'
+        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
+        height: 'medium'
+
+  dashboard.widget.visitorCountAbsolute:
+    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    arguments:
+      $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountAbsoluteWidget'
+      $view: '@dashboard.views.widget'
+    tags:
+      - name: dashboard.widget
+        identifier: 'visitorCountAbsolute'
+        groupNames: 'general'
+        title: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.title'
+        description: 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:visitorCountWidget.description'
+        iconIdentifier: 'tx-mw_matomo_widget-widget-icon'
+        height: 'medium'

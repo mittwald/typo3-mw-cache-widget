@@ -29,17 +29,29 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-call_user_func(static function () {
-    // Register extension icons
+call_user_func(static function() {
+    if (TYPO3_MODE === 'BE') {
+        // Configure caching framework
+        if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['mw_matomo_widget'])) {
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['mw_matomo_widget'] = [
+                'frontend' => \TYPO3\CMS\Core\Cache\Frontend\VariableFrontend::class,
+                'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
+                'options' => [
+                    'defaultLifetime' => 14400
+                ],
+            ];
+        }
+    }
+
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
     $iconRegistry->registerIcon(
-        'tx-mw_cache_widget-widget-icon',
+        'tx-mw_matomo_widget-widget-icon',
         \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:mw_cache_widget/Resources/Public/Icons/Widget.svg']
+        ['source' => 'EXT:mw_matomo_widget/Resources/Public/Icons/Widget.svg']
     );
     $iconRegistry->registerIcon(
-        'tx-mw_cache_widget-dashboard-icon',
+        'tx-mw_matomo_widget-dashboard-icon',
         \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:mw_cache_widget/Resources/Public/Icons/Dashboard.svg']
+        ['source' => 'EXT:mw_matomo_widget/Resources/Public/Icons/Dashboard.svg']
     );
 });
