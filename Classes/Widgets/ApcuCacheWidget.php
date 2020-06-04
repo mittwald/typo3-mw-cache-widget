@@ -44,9 +44,10 @@ class ApcuCacheWidget implements CacheChartInterface
         {
             $apcuData = apcu_sma_info();
             $this->widgetEnabled = True;
-            $this->usedMemory = floatval(number_format(($apcuData["seg_size"] - $apcuData["avail_mem"])/1024/1024, self::decimals));
+            $total = $apcuData['num_seg']*$apcuData["seg_size"];
+            $this->usedMemory = floatval(number_format(($total - $apcuData["avail_mem"])/1024/1024, self::decimals));
             $this->freeMemory = floatval(number_format($apcuData["avail_mem"]/1024/1024, self::decimals));
-            $this->sumMemory = floatval(number_format($apcuData["seg_size"]/1024/1024, self::decimals));
+            $this->sumMemory = floatval(number_format($total/1024/1024, self::decimals));
         }
     }
 
