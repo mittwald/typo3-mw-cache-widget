@@ -20,5 +20,4 @@ It will show how much memory is in use and how much is free.
 	 4. Select the zip file and click on **Upload!**.
 
 ## Compatibility requirements
-TYPO3 v10.4.0 - v10.4.99
-PHP 7.2+
+TYPO3 v10.4.0 - v10.4.99 / PHP 7.2+
