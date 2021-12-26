@@ -1,12 +1,11 @@
 <?php
-declare(strict_types=1);
-namespace Mittwald\CacheStatsWidget\Widgets;
-use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 
-/* * *************************************************************
+declare(strict_types=1);
+
+/****************************************************************
  *  Copyright notice
  *
- *  (C) 2020 Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
+ *  (C) Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
  *
  *  All rights reserved
  *
@@ -25,9 +24,15 @@ use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
+ ***************************************************************/
 
-interface CacheChartInterface extends ChartDataProviderInterface{
+namespace Mittwald\CacheStatsWidget\Widgets;
+
+use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
+
+interface CacheChartInterface extends ChartDataProviderInterface
+{
     public function getFreeMemory(): float;
     public function getSumMemory(): float;
+    public function getWidgetEnabled(): bool;
 }

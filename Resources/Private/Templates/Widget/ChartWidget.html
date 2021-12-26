@@ -9,8 +9,8 @@
             </div>
         </f:then>
         <f:else>
-            <div style="text-align: center; margin: 0px 10px 0px 0px">
-                <h2><f:translate key="{notActive}"/></h2>
+            <div style="text-align: center; margin: 0 10px 0 0">
+                <h2><f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:notactive"/></h2>
             </div>
         </f:else>
     </f:if>
@@ -21,7 +21,7 @@
     <f:if condition="{widgetEnabled}">
         <f:then>
             <div style="text-align: center">
-                <p>{usedMemory} MB von {sumMemory} MB belegt</p>
+                <p>{usedMemory} MB <f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:label.of" /> {sumMemory} MB <f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:label.used" /></p>
             </div>
         </f:then>
     </f:if>

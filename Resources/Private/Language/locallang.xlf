@@ -5,7 +5,18 @@
 		<body>
 			<trans-unit id="notactive" xml:space="preserve">
 				<source>The cache seems to be inactive. Please check your webserver configuration.</source>
-				<target>Der Cache ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</target>
+			</trans-unit>
+			<trans-unit id="label.of" xml:space="preserve">
+				<source>of</source>
+			</trans-unit>
+			<trans-unit id="label.used" xml:space="preserve">
+				<source>used</source>
+			</trans-unit>
+			<trans-unit id="label.memoryUsed" xml:space="preserve">
+				<source>Used memory</source>
+			</trans-unit>
+			<trans-unit id="label.memoryFree" xml:space="preserve">
+				<source>Free memory</source>
 			</trans-unit>
 
 			<trans-unit id="opCacheWidget.title" xml:space="preserve">
