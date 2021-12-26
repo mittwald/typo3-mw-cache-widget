@@ -3,7 +3,6 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2020-04-15T00:00:00Z" product-name="mw_cache_widget">
 		<header/>
 		<body>
-<<<<<<< HEAD
 			<trans-unit id="notactive" xml:space="preserve">
 				<source>The cache seems to be inactive. Please check your webserver configuration.</source>
 				<target>Der Cache ist nicht aktiviert. Bitte überprüfen Sie Ihre Webserver Konfiguration.</target>
@@ -14,32 +13,13 @@
 			</trans-unit>
 			<trans-unit id="opCacheWidget.description" xml:space="preserve">
 				<source>Shows the current memory usage of OpCodeCache.</source>
-=======
-			<trans-unit id="opCacheWidget.title" xml:space="preserve">
-				<source>OpCodeCache Memory Usage (MB)</source>
-			</trans-unit>
-			<trans-unit id="opCacheWidget.description" xml:space="preserve">
-				<source>Shows the current memory usage of OpCodeCache.</source>
-			</trans-unit>
-			<trans-unit id="opCacheWidget.notactive" xml:space="preserve">
-				<source>OpCodeCache seems to be inactive. Please check your webserver configuration.</source>
->>>>>>> parent of 812eb1f... v1.10
 			</trans-unit>
 
 			<trans-unit id="apcuCacheWidget.title" xml:space="preserve">
 				<source>APCu Memory Usage (MB)</source>
-<<<<<<< HEAD
 			</trans-unit>
 			<trans-unit id="apcuCacheWidget.description" xml:space="preserve">
 				<source>Shows the current memory usage of APCu.</source>
-=======
-			</trans-unit>
-			<trans-unit id="apcuCacheWidget.description" xml:space="preserve">
-				<source>Shows the current memory usage of APCu.</source>
-			</trans-unit>
-			<trans-unit id="apcuCacheWidget.notactive" xml:space="preserve">
-				<source>APCu seems to be inactive. Please check your webserver configuration.</source>
->>>>>>> parent of 812eb1f... v1.10
 			</trans-unit>
 		</body>
 	</file>
