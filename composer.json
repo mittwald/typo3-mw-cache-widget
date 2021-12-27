@@ -14,7 +14,7 @@
   },
   "extra": {
     "typo3/cms": {
-      "extension-key": "mc_cache_widget"
+      "extension-key": "mw_cache_widget"
     }
   }
 }
