@@ -28,11 +28,11 @@ declare(strict_types=1);
 
 namespace Mittwald\CacheStatsWidget\Widgets;
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
-use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class AbstractDoughnutChartWidget extends DoughnutChartWidget

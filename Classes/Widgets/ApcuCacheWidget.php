@@ -38,11 +38,11 @@ class ApcuCacheWidget extends AbstractCacheWidget
         if (extension_loaded('apcu') && ini_get('apc.enabled')) {
             $apcuData = apcu_sma_info();
             $this->widgetEnabled = true;
-            $this->usedMemory = floatval(
+            $this->usedMemory = (float)(
                 number_format(($apcuData['seg_size'] - $apcuData['avail_mem']) / 1024 / 1024, 2)
             );
-            $this->freeMemory = floatval(number_format($apcuData['avail_mem'] / 1024 / 1024, 2));
-            $this->sumMemory = floatval(number_format($apcuData['seg_size'] / 1024 / 1024, 2));
+            $this->freeMemory = (float)(number_format($apcuData['avail_mem'] / 1024 / 1024, 2));
+            $this->sumMemory = (float)(number_format($apcuData['seg_size'] / 1024 / 1024, 2));
         }
     }
 }

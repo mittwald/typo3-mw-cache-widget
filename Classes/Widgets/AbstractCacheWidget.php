@@ -56,9 +56,9 @@ abstract class AbstractCacheWidget implements CacheChartInterface
                     'backgroundColor' => ['#FF8700', '#93C481'],
                     'data' => [
                         $this->usedMemory,
-                        $this->freeMemory
-                    ]
-                ]
+                        $this->freeMemory,
+                    ],
+                ],
             ],
         ];
     }

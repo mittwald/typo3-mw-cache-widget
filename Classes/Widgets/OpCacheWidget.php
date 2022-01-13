@@ -38,9 +38,9 @@ class OpCacheWidget extends AbstractCacheWidget
         if (extension_loaded('Zend OPcache') && ini_get('opcache.enable')) {
             $opcacheData = opcache_get_status()['memory_usage'];
             $this->widgetEnabled = true;
-            $this->usedMemory = floatval(number_format($opcacheData['used_memory'] / 1024 / 1024, 2));
-            $this->freeMemory = floatval(number_format($opcacheData['free_memory'] / 1024 / 1024, 2));
-            $this->sumMemory = floatval(
+            $this->usedMemory = (float)(number_format($opcacheData['used_memory'] / 1024 / 1024, 2));
+            $this->freeMemory = (float)(number_format($opcacheData['free_memory'] / 1024 / 1024, 2));
+            $this->sumMemory = (float)(
                 number_format(($opcacheData['used_memory'] + $opcacheData['free_memory']) / 1024 / 1024, 2)
             );
         }
