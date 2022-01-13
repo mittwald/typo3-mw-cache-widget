@@ -1,11 +1,11 @@
 <?php
-declare(strict_types=1);
-namespace Mittwald\CacheStatsWidget\Widgets;
 
-/* * *************************************************************
+declare(strict_types=1);
+
+/****************************************************************
  *  Copyright notice
  *
- *  (C) 2020 Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
+ *  (C) Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
  *
  *  All rights reserved
  *
@@ -24,62 +24,25 @@ namespace Mittwald\CacheStatsWidget\Widgets;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
+ ***************************************************************/
 
-/**
- * The ApcuCacheWidget reads and displays the storage usage
- * of PHP APCu module
- */
-class ApcuCacheWidget implements CacheChartInterface
+namespace Mittwald\CacheStatsWidget\Widgets;
+
+class ApcuCacheWidget extends AbstractCacheWidget
 {
-    private const decimals = 2; // decimals of graph values
-
-
     /**
      * Load data from apcu extension
      */
     protected function loadData(): void
     {
-        if(extension_loaded('apcu') && ini_get('apc.enabled'))
-        {
+        if (extension_loaded('apcu') && ini_get('apc.enabled')) {
             $apcuData = apcu_sma_info();
-            $this->widgetEnabled = True;
-            $this->usedMemory = floatval(number_format(($apcuData["seg_size"] - $apcuData["avail_mem"])/1024/1024, self::decimals));
-            $this->freeMemory = floatval(number_format($apcuData["avail_mem"]/1024/1024, self::decimals));
-            $this->sumMemory = floatval(number_format($apcuData["seg_size"]/1024/1024, self::decimals));
+            $this->widgetEnabled = true;
+            $this->usedMemory = floatval(
+                number_format(($apcuData['seg_size'] - $apcuData['avail_mem']) / 1024 / 1024, 2)
+            );
+            $this->freeMemory = floatval(number_format($apcuData['avail_mem'] / 1024 / 1024, 2));
+            $this->sumMemory = floatval(number_format($apcuData['seg_size'] / 1024 / 1024, 2));
         }
     }
-
-    public function getFreeMemory(): float
-    {
-        $this->loadData();
-        return $this->freeMemory;
-    }
-
-    public function getSumMemory(): float
-    {
-        $this->loadData();
-        return $this->sumMemory;
-    }
-
-    /*
-    * returns the chart data
-    */
-    public function getChartData(): array
-    {
-        $this->loadData();
-        return [
-            'labels' => [
-                "Belegter Speicher",
-                "Freier Speicher"
-            ],
-            'datasets' => [
-                [
-                    'backgroundColor' => ["#1A568F", "#93C481"],
-                    'data' => [$this->usedMemory, $this->freeMemory]
-                ]
-            ],
-        ];
-    }
-
 }

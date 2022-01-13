@@ -1,15 +1,20 @@
 {
-	"name": "mw/cache-widget",
-	"description": "Dashboard widget that displays the current memory usage of OpCodeCache or APCu",
-	"require": {
-		"php": ">=7.2.0",
-		"typo3/cms-core": "^10.3",
-		"typo3/cms-dashboard": "^10.3"
-	},
-	"type": "typo3-cms-extension",
-	"autoload": {
-		"psr-4": {
-			"Mittwald\\CacheStatsWidget\\": "Classes"
-		}
-	}
+  "name": "mw/mw-cache-widget",
+  "description": "Dashboard widget that displays the current memory usage of OpCodeCache or APCu",
+  "require": {
+    "php": ">=7.4.0",
+    "typo3/cms-core": "^11.5",
+    "typo3/cms-dashboard": "^11.5"
+  },
+  "type": "typo3-cms-extension",
+  "autoload": {
+    "psr-4": {
+      "Mittwald\\CacheStatsWidget\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "mw_cache_widget"
+    }
+  }
 }

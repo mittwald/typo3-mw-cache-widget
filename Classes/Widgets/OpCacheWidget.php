@@ -1,11 +1,11 @@
 <?php
-declare(strict_types=1);
-namespace Mittwald\CacheStatsWidget\Widgets;
 
-/* * *************************************************************
+declare(strict_types=1);
+
+/****************************************************************
  *  Copyright notice
  *
- *  (C) 2020 Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
+ *  (C) Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
  *
  *  All rights reserved
  *
@@ -24,58 +24,25 @@ namespace Mittwald\CacheStatsWidget\Widgets;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
+ ***************************************************************/
 
-/**
- * The OpCacheWidget reads and displays the storage usage
- * of PHP OpCache module
- */
-class OpCacheWidget implements CacheChartInterface
+namespace Mittwald\CacheStatsWidget\Widgets;
+
+class OpCacheWidget extends AbstractCacheWidget
 {
-    private const decimals = 2;
-
-
-    public function getChartData(): array
-    {
-        $this->loadData();
-        return [
-            'labels' => [
-                "Belegter Speicher",
-                "Freier Speicher"
-            ],
-            'datasets' => [
-                [
-                    'backgroundColor' => ["#FF8700", "#93C481"],
-                    'data' => [$this->usedMemory, $this->freeMemory]
-                ]
-            ],
-        ];
-    }
-
-    public function getFreeMemory(): float
-    {
-        $this->loadData();
-        return $this->freeMemory;
-    }
-
-    public function getSumMemory(): float
-    {
-        $this->loadData();
-        return $this->sumMemory;
-    }
-
     /**
      * Load data from opcache module
      */
     protected function loadData(): void
     {
-        if(extension_loaded('Zend OPcache') && ini_get('opcache.enable'))
-        {
-            $opcacheData = opcache_get_status()["memory_usage"];
-            $this->widgetEnabled = True;
-            $this->usedMemory = floatval(number_format($opcacheData["used_memory"]/1024/1024,self::decimals));
-            $this->freeMemory = floatval(number_format($opcacheData["free_memory"]/1024/1024,self::decimals));
-            $this->sumMemory = floatval(number_format(($opcacheData["used_memory"]+$opcacheData["free_memory"])/1024/1024,self::decimals));
+        if (extension_loaded('Zend OPcache') && ini_get('opcache.enable')) {
+            $opcacheData = opcache_get_status()['memory_usage'];
+            $this->widgetEnabled = true;
+            $this->usedMemory = floatval(number_format($opcacheData['used_memory'] / 1024 / 1024, 2));
+            $this->freeMemory = floatval(number_format($opcacheData['free_memory'] / 1024 / 1024, 2));
+            $this->sumMemory = floatval(
+                number_format(($opcacheData['used_memory'] + $opcacheData['free_memory']) / 1024 / 1024, 2)
+            );
         }
     }
 }

@@ -1,43 +1,22 @@
 <?php
 
-/***************************************************************
- * Extension Manager/Repository config file for ext "mw_cache_widget".
- ***************************************************************/
-
-$EM_CONF[$_EXTKEY] = array (
-  'title' => 'Mittwald Cache Widget (APCu & OpCodeCache)',
-  'description' => 'Dashboard widget that displays the current memory usage of OpCodeCache or APCu',
-  'category' => 'be',
-  'author' => 'Mittwald CM Service GmbH',
-  'author_email' => 'support@mittwald.de',
-  'author_company' => 'Mittwald CM Service GmbH',
-  'state' => 'beta',
-<<<<<<< HEAD
-  'version' => '1.1.0',
-=======
-  'version' => '1.0.0',
->>>>>>> parent of 812eb1f... v1.10
-  'autoload' => 
-  array (
-    'psr-4' => 
-    array (
-      'Mittwald\\CacheStatsWidget\\' => 'Classes',
-    ),
-  ),
-  'constraints' => 
-  array (
-    'depends' => 
-    array (
-      'typo3' => '10.3.0-10.4.99',
-      'php' => '7.2.0-7.4.99',
-    ),
-    'conflicts' => 
-    array (
-    ),
-    'suggests' => 
-    array (
-    ),
-  ),
-  'uploadfolder' => false,
-);
-
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Mittwald Cache Widget (APCu & OpCodeCache)',
+    'description' => 'Dashboard widget that displays the current memory usage of OpCodeCache or APCu',
+    'category' => 'be',
+    'author' => 'Mittwald CM Service GmbH',
+    'author_email' => 'support@mittwald.de',
+    'author_company' => 'Mittwald CM Service GmbH',
+    'state' => 'stable',
+    'version' => '2.0.0',
+    'uploadfolder' => false,
+    'constraints' => [
+        'depends' =>
+            [
+                'typo3' => '11.5.0-11.5.99',
+                'php' => '7.4.0-8.1.99',
+            ],
+        'conflicts' => [],
+        'suggests' => [],
+    ],
+];

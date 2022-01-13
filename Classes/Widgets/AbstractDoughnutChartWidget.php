@@ -1,11 +1,11 @@
 <?php
-declare(strict_types=1);
-namespace Mittwald\CacheStatsWidget\Widgets;
 
-/* * *************************************************************
+declare(strict_types=1);
+
+/****************************************************************
  *  Copyright notice
  *
- *  (C) 2020 Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
+ *  (C) Mittwald CM Service GmbH & Co. KG <opensource@mittwald.de>
  *
  *  All rights reserved
  *
@@ -24,27 +24,19 @@ namespace Mittwald\CacheStatsWidget\Widgets;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
+ ***************************************************************/
+
+namespace Mittwald\CacheStatsWidget\Widgets;
 
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
-use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-/**
- * The AbstractDoughnutChartWidget class is a base class
- * for our Typo3 AbstractDoughnutChart widgets.
- */
 class AbstractDoughnutChartWidget extends DoughnutChartWidget
 {
-
-    protected $extensionKey = 'mw_cache_widget';
-    const LANG_FILE = 'LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf';
-
-
     /**
      * @var WidgetConfigurationInterface
      */
@@ -72,73 +64,33 @@ class AbstractDoughnutChartWidget extends DoughnutChartWidget
 
     public function __construct(
         WidgetConfigurationInterface $configuration,
-        ChartDataProviderInterface $dataProvider,
+        AbstractCacheWidget $dataProvider,
         StandaloneView $view,
-        $buttonProvider = null,
-        array $options = []
+        array $options = [],
+        $buttonProvider = null
     ) {
         $this->configuration = $configuration;
         $this->dataProvider = $dataProvider;
         $this->view = $view;
         $this->options = $options;
         $this->buttonProvider = $buttonProvider;
+
+        parent::__construct($configuration, $dataProvider, $view, $buttonProvider, $options);
     }
 
     public function renderWidgetContent(): string
     {
-        $path = ExtensionManagementUtility::extPath($this->extensionKey) . 'Resources/Private/';
+        $path = ExtensionManagementUtility::extPath('mw_cache_widget') . 'Resources/Private/';
         $this->view->getTemplatePaths()->setTemplateRootPaths([$path . 'Templates/']);
         $this->view->setTemplate('Widget/ChartWidget');
         $this->view->assignMultiple([
             'button' => $this->buttonProvider,
             'options' => $this->options,
             'configuration' => $this->configuration,
-            'notActive' => self::LANG_FILE . ':notactive',
-            'widgetEnabled' => true,
+            'widgetEnabled' => $this->dataProvider->getWidgetEnabled(),
             'sumMemory' => $this->dataProvider->getSumMemory(),
             'usedMemory' => $this->dataProvider->getSumMemory() - $this->dataProvider->getFreeMemory(),
         ]);
         return $this->view->render();
-    }
-
-    public function getEventData(): array
-    {
-        return [
-            'graphConfig' => [
-                'type' => 'doughnut',
-                'options' => [
-                    'maintainAspectRatio' => false,
-                    'legend' => [
-                        'display' => true,
-                        'position' => 'bottom'
-                    ],
-                    'cutoutPercentage' => 60
-                ],
-                'data' => $this->dataProvider->getChartData(),
-            ],
-        ];
-    }
-
-    public function getCssFiles(): array
-    {
-        return ['EXT:dashboard/Resources/Public/Css/Contrib/chart.css'];
-    }
-
-    public function getRequireJsModules(): array
-    {
-        return [
-            'TYPO3/CMS/Dashboard/Contrib/chartjs',
-            'TYPO3/CMS/Dashboard/ChartInitializer',
-        ];
-    }
-
-    /**
-     * @param string $string
-     * @return bool if string is in json syntax
-     */
-    private function isJson(string $string): bool
-    {
-        @json_decode($string);
-        return (json_last_error() == JSON_ERROR_NONE);
     }
 }
