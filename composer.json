@@ -1,5 +1,5 @@
 {
-	"name": "mw/cache-widget",
+	"name": "mittwald/cache-widget",
 	"description": "Dashboard widget that displays the current memory usage of OpCodeCache or APCu",
 	"require": {
 		"php": ">=7.2.0",
