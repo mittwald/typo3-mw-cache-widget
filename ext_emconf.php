@@ -12,11 +12,7 @@ $EM_CONF[$_EXTKEY] = array (
   'author_email' => 'support@mittwald.de',
   'author_company' => 'Mittwald CM Service GmbH',
   'state' => 'beta',
-<<<<<<< HEAD
   'version' => '1.1.0',
-=======
-  'version' => '1.0.0',
->>>>>>> parent of 812eb1f... v1.10
   'autoload' => 
   array (
     'psr-4' => 
@@ -28,7 +24,7 @@ $EM_CONF[$_EXTKEY] = array (
   array (
     'depends' => 
     array (
-      'typo3' => '10.3.0-10.4.99',
+      'typo3' => '10.4.0-10.4.99',
       'php' => '7.2.0-7.4.99',
     ),
     'conflicts' => 

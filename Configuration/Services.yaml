@@ -3,7 +3,6 @@ services:
   Mittwald\CacheStatsWidget\:
     resource: '../Classes/*'
 
-<<<<<<< HEAD
   dashboard.widget.opCache:
     class: 'Mittwald\CacheStatsWidget\Widgets\AbstractDoughnutChartWidget'
     arguments:
@@ -31,18 +30,3 @@ services:
         description: 'LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:apcuCacheWidget.description'
         iconIdentifier: 'tx-mw_cache_widget-widget-icon'
         height: 'medium'
-=======
-  opCache:
-    class: Mittwald\CacheStatsWidget\Widgets\OpCacheWidget
-    arguments: ['opCache']
-    tags:
-      - name: dashboard.widget
-        widgetGroups: 'typo3'
-
-  apcuCache:
-    class: Mittwald\CacheStatsWidget\Widgets\ApcuCacheWidget
-    arguments: ['apcuCache']
-    tags:
-      - name: dashboard.widget
-        widgetGroups: 'typo3'
->>>>>>> parent of 812eb1f... v1.10

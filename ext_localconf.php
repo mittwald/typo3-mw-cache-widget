@@ -29,12 +29,7 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-<<<<<<< HEAD
 call_user_func(static function() {
-=======
-call_user_func(static function () {
-    // Register extension icons
->>>>>>> parent of 812eb1f... v1.10
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
     $iconRegistry->registerIcon(
         'tx-mw_cache_widget-widget-icon',
