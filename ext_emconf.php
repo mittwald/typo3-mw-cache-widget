@@ -12,7 +12,7 @@ $EM_CONF[$_EXTKEY] = array (
   'author_email' => 'support@mittwald.de',
   'author_company' => 'Mittwald CM Service GmbH',
   'state' => 'beta',
-  'version' => '1.1.0',
+  'version' => '1.1.1',
   'autoload' => 
   array (
     'psr-4' => 
