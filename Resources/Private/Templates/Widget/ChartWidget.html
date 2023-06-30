@@ -4,13 +4,13 @@
 
     <f:if condition="{widgetEnabled}">
         <f:then>
-            <div class="widget-chart" style="height: 250px">
+            <div class="widget-chart">
                 <canvas></canvas>
             </div>
         </f:then>
         <f:else>
-            <div style="text-align: center; margin: 0 10px 0 0">
-                <h2><f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:notactive"/></h2>
+            <div class="text-center">
+                <h2><f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:notactive" extensionName="MwCacheWidget"/></h2>
             </div>
         </f:else>
     </f:if>
@@ -20,8 +20,8 @@
 
     <f:if condition="{widgetEnabled}">
         <f:then>
-            <div style="text-align: center">
-                <p>{usedMemory} MB <f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:label.of" /> {sumMemory} MB <f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:label.used" /></p>
+            <div class="text-center">
+                <p>{usedMemory} MB <f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:label.of" extensionName="MwCacheWidget" /> {sumMemory} MB <f:translate key="LLL:EXT:mw_cache_widget/Resources/Private/Language/locallang.xlf:label.used" extensionName="MwCacheWidget" /></p>
             </div>
         </f:then>
     </f:if>

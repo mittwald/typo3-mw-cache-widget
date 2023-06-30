@@ -8,10 +8,9 @@ services:
     resource: '../Classes/*'
 
   dashboard.widget.opCache:
-    class: 'Mittwald\CacheStatsWidget\Widgets\AbstractDoughnutChartWidget'
+    class: 'Mittwald\CacheStatsWidget\Widgets\DoughnutChartWidget'
     arguments:
       $dataProvider: '@Mittwald\CacheStatsWidget\Widgets\OpCacheWidget'
-      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
         identifier: 'opCache'
@@ -22,10 +21,9 @@ services:
         height: 'medium'
 
   dashboard.widget.apcuCache:
-    class: 'Mittwald\CacheStatsWidget\Widgets\AbstractDoughnutChartWidget'
+    class: 'Mittwald\CacheStatsWidget\Widgets\DoughnutChartWidget'
     arguments:
       $dataProvider: '@Mittwald\CacheStatsWidget\Widgets\ApcuCacheWidget'
-      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
         identifier: 'apcuCache'
