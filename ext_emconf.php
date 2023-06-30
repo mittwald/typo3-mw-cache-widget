@@ -8,13 +8,12 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'support@mittwald.de',
     'author_company' => 'Mittwald CM Service GmbH',
     'state' => 'stable',
-    'version' => '2.0.0',
+    'version' => '3.0.0-dev',
     'uploadfolder' => false,
     'constraints' => [
         'depends' =>
             [
-                'typo3' => '11.5.0-11.5.99',
-                'php' => '7.4.0-8.1.99',
+                'typo3' => '12.4.0-12.4.99',
             ],
         'conflicts' => [],
         'suggests' => [],
