@@ -21,7 +21,8 @@ No configuration is required.
 
 ## TYPO3 Compatibility
 
-| Version | TYPO3      | PHP       | Support/Development                     |
-|---------| ---------- | ----------|---------------------------------------- |
-| 2.x     | 11.5       | >= 7.4    | Features, Bugfixes, Security Updates    |
-| 1.x     | 10.4       | 7.2 - 7.4 | Features, Bugfixes, Security Updates    |
+| Version | TYPO3 | PHP       | Support/Development                     |
+|---------|-------|-----------|---------------------------------------- |
+| 3.x     | 12.4  | >= 8.1    | Features, Bugfixes, Security Updates    |
+| 2.x     | 11.5  | 7.4 - 8.x | Features, Bugfixes, Security Updates    |
+| 1.x     | 10.4  | 7.2 - 7.4 | Bugfixes, Security Updates    |
