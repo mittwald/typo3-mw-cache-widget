@@ -78,9 +78,7 @@ abstract class AbstractCacheWidget implements CacheChartInterface
         return $this->widgetEnabled;
     }
 
-    protected function loadData(): void
-    {
-    }
+    protected function loadData(): void {}
 
     protected function getLanguageService(): LanguageService
     {

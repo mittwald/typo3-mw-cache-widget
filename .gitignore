@@ -1,8 +1,7 @@
 # IDE
 .idea
 
-# Local files
-.Build
-.php-cs-fixer.cache
-
-composer.lock
+# Build files
+.Build/*/public
+.Build/*/vendor
+.Build/*/composer.lock

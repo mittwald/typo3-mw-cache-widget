@@ -1,36 +1,43 @@
-name: Code analysis
+name: Code Quality Checks
 
 on: [push, pull_request]
 
 jobs:
   build:
+
+    runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        php: ['8.1', '8.2']
-    runs-on: ubuntu-latest
-    name: PHP ${{ matrix.php }}
-    
+        typo3: [v12, v13]
+        php: [8.1, 8.2, 8.3, 8.4]
+        exclude:
+          - typo3: v13
+            php: 8.1
+
     steps:
-    - uses: actions/checkout@v1
-      
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: mbstring, intl, json
-        coverage: pcov
-        tools: composer:v2
+      - uses: actions/checkout@v3
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+      - name: Set up PHP Version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
 
-    - name: Run PHP lint
-      run: find . -name \*.php ! -path "./.Build/*" | xargs -n1 php -d display_errors=stderr -l
+      - name: Validate composer.json and composer.lock
+        run: composer validate
 
-    - name: Install composer dependencies
-      run: |
-        composer install --no-progress
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache
+          key: dependencies-composer-${{ hashFiles('composer.json') }}
 
-    - name: Validate PHP coding guidelines
-      run: |
-        .Build/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -v --dry-run --stop-on-violation --using-cache=no
+      - name: Install composer dependencies
+        run: |
+          cd .Build/${{ matrix.typo3 }}/
+          composer install --no-progress
+
+      - name: Validate PHP coding guidelines
+        run: |
+          .Build/${{ matrix.typo3 }}/vendor/bin/php-cs-fixer fix --config=.Build/php-cs-fixer/.php-cs-fixer.php -v --dry-run --stop-on-violation --using-cache=no
