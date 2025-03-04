@@ -5,3 +5,4 @@
 .Build/*/public
 .Build/*/vendor
 .Build/*/composer.lock
+.php-cs-fixer.cache
