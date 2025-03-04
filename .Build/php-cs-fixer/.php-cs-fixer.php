@@ -2,7 +2,7 @@
 
 $header = <<<'EOF'
 
-This file is part of the TYPO3 extension mw_matomo_widget.
+This file is part of the TYPO3 extension mw_cache_widget.
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
